@@ -5,22 +5,38 @@
 #include <string.h>
 #include <stdio.h>
 
+
+void handleErrors(int errnumber) {
+  char *err = strerror(errnumber);
+  write(1, err, strlen(err));
+}
+
+
 int main(int argc, const char *argv[]) {
 
-  int fdread = open(argv[1], O_RDONLY);
-  int fdwrite = open(argv[2], O_APPEND | O_WRONLY | O_CREAT, 0666);
 
+  if (argc < 3) return 1;
+
+  errno = 0;
+  
+  int fdread = open(argv[1], O_RDONLY);
+  if (fdread == -1) {
+    handleErrors(errno);
+    return 1;
+  }
+  
+  int fdwrite = open(argv[2], O_APPEND | O_WRONLY | O_CREAT, 0666);
+  if (fdwrite == -1) {
+
+    handleErrors(errno);
+    return 1;
+  }
   char *buff;
   ssize_t  size;
 
 
+  
 
-
-  // for(;;) { 
-  //size = read(fdread, buff, 1); 
-  // if (size !=1) break; 
-  //write(fdwrite, buff, 1);
-  // }
 
 
   for (;;) {
@@ -30,5 +46,9 @@ int main(int argc, const char *argv[]) {
     }
   
 
+
+
+
+  
   return 0;
 } 
