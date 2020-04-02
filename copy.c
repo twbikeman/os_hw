@@ -21,9 +21,9 @@ int main(int argc, const char *argv[]) {
   // if (size !=1) break; 
   //write(fdwrite, buff, 1);
   // }
-;
 
- while (1) {
+
+  for (;;) {
      size = read(fdread, buff, 1);
      if (size != 1) break;
      write(fdwrite, buff, 1);
