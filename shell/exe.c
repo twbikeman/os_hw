@@ -100,25 +100,33 @@ int main(void)  {
       pos--;
     *pos = '\0';
     printf("--------------\n");
-    addHist(hist, line);
+    
     
 
-    parse(line, argv);
+
     
-    if (strcmp(argv[0], "exit") == 0)
+    if (strcmp(line, "exit") == 0)
       exit(0);
-    else if(*(argv[0]) == '!') {
-      printf("%s\n",hist + 1024 * (atoi(argv[0]+1)+1));
-      parse(hist + 1024 * (atoi(argv[0]+1) + 1), argv);
-      
+    else if(line[0] == '!') {
+      strcpy(line, hist + 1024 * (atoi(&line[1])));
+      printf("%s\n",line);
+      addHist(hist, line);
+      if (strcmp(line, "history") == 0) showHist(hist);
+      else {
+      parse(line, argv);
       execute(argv);
+      }
     }
-    else if(strcmp(argv[0], "history") == 0) {
+    else if(strcmp(line, "history") == 0) {
+      addHist(hist, line);
       showHist(hist);
       printf("-----------\n");
     }
-    else
-    execute(argv);
+    else {
+      addHist(hist, line);
+      parse(line, argv);
+      execute(argv);
+    }
   }
 
 
