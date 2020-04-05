@@ -3,15 +3,14 @@
 #include <stdbool.h>
 #include <math.h>
 
-#define MIN_PID 10
-#define MAX_PID 20
+#define MIN_PID 300
+#define MAX_PID 5000
 
 int *map;
 
 int allocate_map() {
   map = (int *)calloc(1, (MAX_PID - MIN_PID + 1) / 8 + ((MAX_PID - MIN_PID + 1) % 8 != 0));
   return 1;
-  
 }
 
 
@@ -93,61 +92,21 @@ int main() {
   init = allocate_map();
   int allocate;
   
-  allocate = allocate_pid_index(10);
-  allocate = allocate_pid_index(11);
-  allocate = release_pid(10);
+  allocate = allocate_pid_index(300);
+  allocate = allocate_pid_index(301);
+  allocate = release_pid(300);
 
-  
-  
   printf("--------------------------\n");
   allocate_pid_show();
   printf("--------------------------\n");
   
   allocate = allocate_pid();
   printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-  allocate = allocate_pid();
-  printf("allocate pid is %d\n", allocate);
-
 
 
   printf("--------------------------\n");
   allocate_pid_show();
   printf("--------------------------\n");
   
-
   return 0;
 }
