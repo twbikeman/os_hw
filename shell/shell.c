@@ -6,7 +6,7 @@ void makeToken(char *line, char **argv) {
     while (*line == '\t' || *line == ' ' || *line == '\n'){
       *line++ = '\0';
     }
-    *argv++ = line;
+    if (*line != '\0') *argv++ = line;
     while(*line != '\0' && *line != '\t' && *line != ' ' && *line != '\n'){
       line++;
     }  
@@ -16,7 +16,7 @@ void makeToken(char *line, char **argv) {
 
 
 int main() {
-  char a[] = " 123 234 567";
+  char a[] = " 123 234 567  ";
   char *b[5];
 
   makeToken(a, b);
@@ -29,9 +29,11 @@ int main() {
   }
   printf("%d\n", i);
   
-  printf("%s\n", b[0]);
-  printf("%s\n", b[1]);
-  printf("%s\n", b[2]);
+  printf("%p\n", b[0]);
+  printf("%p\n", b[1]);
+  printf("%p\n", b[2]);
+  printf("%p\n", b[3]);
+
 
    
   return 0;
