@@ -1,0 +1,1 @@
+cmd_/home/che0520/os_hw/module/sample.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000 -T ./scripts/module-common.lds  --build-id  -o /home/che0520/os_hw/module/sample.ko /home/che0520/os_hw/module/sample.o /home/che0520/os_hw/module/sample.mod.o ;  true
