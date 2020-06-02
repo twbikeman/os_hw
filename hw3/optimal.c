@@ -1,5 +1,5 @@
-/*
-  Least Recently Used Page Replacement
+\/*
+  Optimal Page Replacement
 */
 
 #include <stdio.h>
