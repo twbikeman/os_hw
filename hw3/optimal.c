@@ -67,9 +67,9 @@ int predict(int reference_length, int references[], int page_no, int frame_size,
   int pos = -1, farthest = start, i;
   for (i = 0; i < frame_size; i++) {
     int j;
-    for (j = start -1 ; j >=0; j--) {
+    for (j = start; j < reference_length; j++) {
       if (frame[i] == references[j]) {
-	if (j < farthest) {
+	if (j > farthest) {
 	  farthest = j;
 	  pos = i;
 	}
